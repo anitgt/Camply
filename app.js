@@ -23,12 +23,12 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'))
 
+// app.get('/', (req,res) => {
+//     res.send('On')
+// })
+
+
 app.get('/', (req,res) => {
-    res.send('On')
-})
-
-
-app.get('/home', (req,res) => {
     res.render('home')
 })
 
