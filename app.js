@@ -5,7 +5,8 @@ const ejsMate = require('ejs-mate');
 const session = require('express-session')
 const ExpressError = require('./utils/ExpressError')
 const methodOverride = require('method-override');
-const flash = require('connect-flash')
+const flash = require('connect-flash');
+
 
 const campgrounds = require('./routes/campgrounds.js');
 const reviews = require('./routes/reviews.js');
