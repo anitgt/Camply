@@ -7,7 +7,10 @@ const { isLoggedIn, isAuthor, validateCampground } = require('../middleware.js')
 
 router.route('/')
     .get(catchAsync(campgrounds.index))
-    .post(isLoggedIn, validateCampground,catchAsync(campgrounds.createCampground))
+    //.post(isLoggedIn, validateCampground,catchAsync(campgrounds.createCampground))
+    .post((req,res) => {
+        res.send(req.body)
+    })
 
 router.get('/new', isLoggedIn, campgrounds.renderNewForm);
 
