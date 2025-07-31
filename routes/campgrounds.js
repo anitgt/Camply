@@ -5,7 +5,8 @@ const catchAsync = require('../utils/catchAsync');
 const Campground = require('../models/campground');
 const { isLoggedIn, isAuthor, validateCampground } = require('../middleware.js')
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/'});
+const { storage } = require('../cloudinary/index.js')
+const upload = multer({ storage });
 
 router.route('/')
     .get(catchAsync(campgrounds.index))
