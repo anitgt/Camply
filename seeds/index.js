@@ -23,9 +23,15 @@ const seedDB = async() => {
             author: '6888878231cfb761207e925b',
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
-            image: `https://picsum.photos/400?random=${Math.random()}`,
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, placeat at voluptatum sint vel impedit accusantium hic eligendi unde commodi possimus ullam tenetur! Assumenda ea sunt nesciunt atque, similique quibusdam?',
-
+            images: [
+                {
+                    url: `https://picsum.photos/400?random=${Math.random()}`,
+                },
+                {
+                    url: `https://picsum.photos/400?random=${Math.random()}`,
+                }
+            ]
         })
         await camp.save()
     }
