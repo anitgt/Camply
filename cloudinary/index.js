@@ -9,8 +9,10 @@ cloudinary.config({
 
 const storage = new CloudinaryStorage({
     cloudinary,
+    params: {
     folder: 'Camply',
     allowedFormats: ['jpeg', 'png', 'jpg']
+    }
 })
 
 module.exports = {
