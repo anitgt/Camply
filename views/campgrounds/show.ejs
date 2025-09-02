@@ -1,8 +1,13 @@
 <% layout('layout/boilerplate') %>
 <link rel="stylesheet" href="/stylesheets/stars.css">
 
+<script>
+  const maptilerApiKey = '<%- process.env.MAPTILER_API_KEY %>';
+</script>
+
 <div class="row">
   <div class="col-6">
+    <div id="map" style=" width: 400px; height: 300px"></div>
     <div id="campgroundCarousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <% campground.images.forEach((img, i) => { %>
@@ -95,3 +100,5 @@
     <% } %>
   </div>
 </div>
+
+<script src="/public/js/showPageMap.js"></script>
