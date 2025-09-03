@@ -19,6 +19,7 @@
           <h5 class="card-title">
             <%= campground.title %>
           </h5>
+          <h5 class="card-title"><%= campground.properties.popUpMarkup %></h5>
           <p class="card-text"><%=campground.description %></p>
           <p class="card-text">
             <small class="text-muted">
@@ -35,6 +36,7 @@
 </div>
 <script>
   const maptilerApiKey = '<%- process.env.MAPTILER_API_KEY %>';
+  const campgrounds = { features: <%- JSON.stringify(campgrounds) %>}
 </script>
 
 <script src="/js/clusterMap.js"></script>
