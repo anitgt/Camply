@@ -25,7 +25,12 @@ const seedDB = async () => {
             title: `${sample(descriptors)} ${sample(places)}`,
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, placeat at voluptatum sint vel impedit accusantium hic eligendi unde commodi possimus ullam tenetur! Assumenda ea sunt nesciunt atque, similique quibusdam?',
             price,
-            geometry: { type: "Point", coordinates: [-113.3, 47.0202] }, // ✅ fixed
+            geometry: { type: "Point",
+                 coordinates: [
+                    cities[random1000].longitude,
+                    cities[random1000].latitude
+                ]
+                 },
             images: [
                 {
                     url: `https://picsum.photos/400?random=${Math.random()}`,
