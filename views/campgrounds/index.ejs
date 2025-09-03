@@ -1,4 +1,5 @@
 <% layout('layout/boilerplate') %>
+<div id="map" style="width:100%; height: 500px"></div>
 <h1>All Campgrounds</h1>
 <a href="/campgrounds/new">Make New Campground</a>
 <div>
@@ -32,3 +33,8 @@
   </div>
  <% } %>
 </div>
+<script>
+  const maptilerApiKey = '<%- process.env.MAPTILER_API_KEY %>';
+</script>
+
+<script src="/js/clusterMap.js"></script>
