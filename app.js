@@ -2,10 +2,6 @@ if(process.env.NODE_ENV !== "production") {
     require('dotenv').config()
 };
 
-console.log(process.env.SECRET)
-console.log(process.env.API_KEY)
-
-
 const sanitizeV5 = require('./utils/mongoSanitizeV5.js');
 const express = require('express');
 const mongoose = require('mongoose')
