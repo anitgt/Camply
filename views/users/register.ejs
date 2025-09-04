@@ -1,11 +1,18 @@
 <% layout('./layout/boilerplate') %>
-<h1>Register</h1>
-
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row w-100">
+        <div class="col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+            <div class="card shadow p-4 rounded-4">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920&auto=format&fit=crop" alt="" class="card-img-top">
+                <div class="card-body">
+                                  
 <form action="/register" class="validated-form" novalidate method="POST"> 
+
+    <h3 class="text-center mb-4">Register</h3>
 
     <div class="mb-3">
         <label class="form-label" for="username">Username</label>
-        <input class="form-control" type="text" id="username" name="username" required>
+        <input autofocus class="form-control" type="text" id="username" name="username" required>
      <div class="valid-feedback">
             Looks Good!
         </div>
@@ -20,7 +27,7 @@
     </div>
 
     <div class="mb-3">
-        <label class="form-label" for="password">Passwprd</label>
+        <label class="form-label" for="password">Password</label>
         <input class="form-control" type="password" id="password" name="password" required>
      <div class="valid-feedback">
             Looks Good!
@@ -28,3 +35,9 @@
     </div>
     <button class="btn btn-success">Register</button>
 </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
