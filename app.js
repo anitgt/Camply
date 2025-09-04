@@ -5,6 +5,8 @@ if(process.env.NODE_ENV !== "production") {
 console.log(process.env.SECRET)
 console.log(process.env.API_KEY)
 
+
+const sanitizeV5 = require('./utils/mongoSanitizeV5.js');
 const express = require('express');
 const mongoose = require('mongoose')
 const path = require('path');
@@ -15,6 +17,8 @@ const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+
+
 
 const User = require('./models/user.js');
 
@@ -35,6 +39,7 @@ mongoose.connect('mongodb://localhost:27017/Camply')
     })
 
 const app = express();
+app.set('query parser', 'extended');
 
 app.engine('ejs', ejsMate)
 app.set('views', path.join(__dirname, 'views'))
@@ -43,8 +48,8 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(sanitizeV5({ replaceWith: '_' }));
 
-app.use(mongoSanitize())
 
 const sessionConfig = {
     secret: 'secret1',
