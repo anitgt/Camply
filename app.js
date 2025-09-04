@@ -18,9 +18,6 @@ const LocalStrategy = require('passport-local');
 
 const User = require('./models/user.js');
 
-const mongoSanitize = require('express-mongo-sanitize');
-
-
 const userRoutes = require('./routes/users.js')
 const campgroundRoutes = require('./routes/campgrounds.js');
 const reviewRoutes = require('./routes/reviews.js');
@@ -48,12 +45,13 @@ app.use(sanitizeV5({ replaceWith: '_' }));
 
 
 const sessionConfig = {
+    name: 'session',
     secret: 'secret1',
     resave: false,
     saveUninitialized: false,
-    //store:
     cookie: {
         httpOnly: true,
+        //secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
