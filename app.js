@@ -20,9 +20,11 @@ const userRoutes = require('./routes/users.js')
 const campgroundRoutes = require('./routes/campgrounds.js');
 const reviewRoutes = require('./routes/reviews.js');
 
-//const dbUrl = process.env.DB_URL
+const MongoStore = require('connect-mongo');
+// 
+const dbUrl = 'mongodb://localhost:27017/Camply';
 
-mongoose.connect('mongodb://localhost:27017/Camply')
+mongoose.connect(dbUrl)
     .then(()=> {
         console.log('Connection Succesful')
     })
@@ -43,8 +45,20 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(sanitizeV5({ replaceWith: '_' }));
 
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret: 'secret1'
+    }
+});
+
+store.on('error', function(e) {
+    console.log('error', e);
+})
 
 const sessionConfig = {
+    store,
     name: 'session',
     secret: 'secret1',
     resave: false,
