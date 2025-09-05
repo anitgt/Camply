@@ -20,6 +20,8 @@ const userRoutes = require('./routes/users.js')
 const campgroundRoutes = require('./routes/campgrounds.js');
 const reviewRoutes = require('./routes/reviews.js');
 
+//const dbUrl = process.env.DB_URL
+
 mongoose.connect('mongodb://localhost:27017/Camply')
     .then(()=> {
         console.log('Connection Succesful')
