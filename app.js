@@ -22,7 +22,7 @@ const reviewRoutes = require('./routes/reviews.js');
 
 const MongoStore = require('connect-mongo');
 // 
-const dbUrl = process.env.DB_URL;
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/Camply';
 
 mongoose.connect(dbUrl)
     .then(()=> {
@@ -55,12 +55,13 @@ const store = MongoStore.create({
 
 store.on('error', function(e) {
     console.log('error', e);
-})
+});
+const secret = process.env.SECRET || 'secret1';
 
 const sessionConfig = {
     store,
     name: 'session',
-    secret: 'secret1',
+    secret,
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -116,6 +117,8 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err });
 });
 
+const port = process.env.PORT || 3000;
+
 app.listen(3000, () => {
-    console.log('Listening at port 3000')
+    console.log(`Serving on port ${port}`)
 })
